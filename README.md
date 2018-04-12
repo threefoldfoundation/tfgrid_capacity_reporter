@@ -2,7 +2,10 @@
 
 ## Generate flist using the build script
 
-The [reportbuilder.py](reportbuilder.py) script included in this repository can create a docker image with JS9 installed and the capacity report dependencies and push it to a docker hub repository.
+If you want to use a pre-made flist, skip to [Set up a sandbox using flist](#set-up-a-sandbox-using-flist)
+
+The [reportbuilder.py](reportbuilder.py) script included in this repository will create a docker image with Jumpscale9 installed and the capacity report dependencies locally and when specified, push it to a docker hub repository.  
+By default, the development branch of Jumpscale will be installed on the image. If another branch should be used, add the `--jsbranch <name of branch>` argument.
 
 To use the script:
 ```sh
@@ -25,26 +28,31 @@ In this guide, [zbundle](https://github.com/zero-os/0-bundle) will be used to ru
 
 To install zbundle, check out the [zbundle install guide here](zbundle.md)
 
-Run zbundle with previously created flist.
+Run zbundle with the previously created flist or use the gig official reportbuilder flist.  
+Zbundle needs root access to work properly, when not using a root user, use `sudo`.
 ```sh
-zbundle --id ubu \
+# Using the self created flist
+zbundle --id reportbuilder \
     --no-exit  \
     --entry-point /bin/bash \
     https://hub.gig.tech/chris_van%20de%20gejuchte_1/chrisvdg-reportbuilder-latest.flist
 
+# Using the gig official flist
+zbundle --id reportbuilder --no-exit --entry-point /bin/bash https://hub.gig.tech/gig-official-apps/reportbuilder-latest.flist
 ```
 
 To explain the added arguments:
 * id: ID of the sandbox
 * no-exit: The sandbox now immediately exits after creation. To prevent it from exiting and deleting the sandbox, this flag is used to keep it open. To exit the sandbox, press `ctrl + c` twice.
 * entry-point: entry point of the sandbox
-* [url]: location of the flist
+* [url]: source of the flist
 
 ## Access sandbox
 
-To access the sandbox, open a new terminal window and chroot into the sandbox.
+To access the sandbox, open a new terminal window and `chroot` into the sandbox.  
+Again, when not using a root user, use `sudo`.
 ```sh
-chroot /tmp/zbundle/ubu
+chroot /tmp/zbundle/reportbuilder
 ```
 
 The terminal should now be inside the sandbox and Jumpscale should be available

@@ -5,7 +5,7 @@ from js9 import j
 
 def _install_js(prefab, branch):
     """
-    Install jumpscale on provided prefab
+    Install Jumpscale9 on provided prefab
     """
     prefab.js9.js9core.install(branch=branch)
     for component in ("core9", "lib9", "prefab9"):
@@ -60,7 +60,7 @@ def _main():
                         help="Jumpscale git branch, tag or revision to build")
     parser.add_argument("--push",  action='store_true', help="Push to docker hub")
     parser.add_argument("--image",  type=str, default="jumpscale/reportbuilder", help="Name (and tag) of the image to commit to")
-    parser.add_argument("--debug", help="Print debug information")
+    parser.add_argument("--debug", action='store_true', help="Print (Jumpscale) debug information")
     args = parser.parse_args()
     if not args.debug:
         j.logger.loggers_level_set('INFO')
