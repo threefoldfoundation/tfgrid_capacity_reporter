@@ -37,8 +37,11 @@ zbundle --id reportbuilder \
     --entry-point /bin/bash \
     https://hub.gig.tech/chris_van%20de%20gejuchte_1/chrisvdg-reportbuilder-latest.flist
 
-# Using the gig official flist
+# Using the GIG official reportbuilder flist
 zbundle --id reportbuilder --no-exit --entry-point /bin/bash https://hub.gig.tech/gig-official-apps/reportbuilder-latest.flist
+
+# Using the Jumpscale sandbox flist
+sudo zbundle -id js9sandbox -entry-point /bin/bash -no-exit https://hub.gig.tech/abdelrahman_hussein_1/js9_sandbox_full.flist
 ```
 
 To explain the added arguments:
@@ -49,17 +52,48 @@ To explain the added arguments:
 
 ## Access sandbox
 
+### Reportbuilder flist
+
 To access the sandbox, open a new terminal window and `chroot` into the sandbox.  
 Again, when not using a root user, use `sudo`.
 ```sh
 chroot /tmp/zbundle/reportbuilder
 ```
 
-The terminal should now be inside the sandbox and Jumpscale should be available
+The terminal should now be inside the reportbuilder sandbox and Jumpscale should be available
 ```
 root@machine:/# js9
 * ***Application started***: jsshell
 Python 3.5.2 (default, Nov 23 2017, 16:37:01) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 6.3.1 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: 
+```
+
+### Jumpscale sandbox flist
+
+To access the sandbox, open a new terminal window and `chroot` into the sandbox.  
+Again, when not using a root user, use `sudo`.
+```sh
+chroot /tmp/zbundle/js9sandbox
+```
+
+Before we can start, a DNS server needs to be set up so the dependencies of the capacity report can be downloaded (the reportbuilder flist has them pre-installed).
+```sh
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+```
+
+Then source the jumpscale environment.
+```sh
+source env.sh
+```
+
+Jumpscale should now be available.
+```sh
+JS9: js9
+* ***Application started***: jsshell
+Python 3.6.5+ (heads/3.6:4533494, Apr 26 2018, 21:55:46)
 Type 'copyright', 'credits' or 'license' for more information
 IPython 6.3.1 -- An enhanced Interactive Python. Type '?' for help.
 
