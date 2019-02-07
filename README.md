@@ -38,7 +38,7 @@ zbundle --id reportbuilder \
     https://hub.grid.tf/chris_van%20de%20gejuchte_1/chrisvdg-reportbuilder-latest.flist
 
 # Using the threefoldtech official reportbuilder flist
-zbundle --id reportbuilder --no-exit --entry-point /bin/bash https://hub.grid.tf/gig-official-apps/reportbuilder-latest.flist
+zbundle --id reportbuilder --no-exit --entry-point /bin/bash https://hub.grid.tf/tf-official-apps/reportbuilder-latest.flist
 
 # Using the Jumpscale sandbox flist
 sudo zbundle -id js9sandbox -entry-point /bin/bash -no-exit https://hub.grid.tf/abdelrahman_hussein_1/js9_sandbox_full.flist
@@ -177,3 +177,7 @@ In [2]: print(report)
   ]
 }
 ```
+
+# Repository Owner:
+
+* [chrisvdg](https://github.com/chrisvdg)
