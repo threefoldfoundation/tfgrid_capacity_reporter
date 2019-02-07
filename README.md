@@ -14,7 +14,7 @@ To use the script:
 python3 reportbuilder.py --push --image chrisvdg/reportbuilder
 ```
 
-After the script has completed successfully run and the image is pushed, an flist from that image can be created on https://hub.gig.tech/docker-convert.
+After the script has completed successfully run and the image is pushed, an flist from that image can be created on https://hub.grid.tf/docker-convert.
 
 ![alt text](src/1.png "Convert docker image to flist")
 
@@ -28,20 +28,20 @@ In this guide, [zbundle](https://github.com/zero-os/0-bundle) will be used to ru
 
 To install zbundle, check out the [zbundle install guide here](zbundle.md)
 
-Run zbundle with the previously created flist or use the gig official reportbuilder flist.  
+Run zbundle with the previously created flist or use the threefoldtech official reportbuilder flist.  
 Zbundle needs root access to work properly, when not using a root user, use `sudo`.
 ```sh
 # Using the self created flist
 zbundle --id reportbuilder \
     --no-exit  \
     --entry-point /bin/bash \
-    https://hub.gig.tech/chris_van%20de%20gejuchte_1/chrisvdg-reportbuilder-latest.flist
+    https://hub.grid.tf/chris_van%20de%20gejuchte_1/chrisvdg-reportbuilder-latest.flist
 
-# Using the GIG official reportbuilder flist
-zbundle --id reportbuilder --no-exit --entry-point /bin/bash https://hub.gig.tech/gig-official-apps/reportbuilder-latest.flist
+# Using the threefoldtech official reportbuilder flist
+zbundle --id reportbuilder --no-exit --entry-point /bin/bash https://hub.grid.tf/gig-official-apps/reportbuilder-latest.flist
 
 # Using the Jumpscale sandbox flist
-sudo zbundle -id js9sandbox -entry-point /bin/bash -no-exit https://hub.gig.tech/abdelrahman_hussein_1/js9_sandbox_full.flist
+sudo zbundle -id js9sandbox -entry-point /bin/bash -no-exit https://hub.grid.tf/abdelrahman_hussein_1/js9_sandbox_full.flist
 ```
 
 To explain the added arguments:
